@@ -1,0 +1,31 @@
+<div class="container">
+  <mat-icon>cloud_upload</mat-icon>
+
+  <input #mentorUpload
+         (change)="onFileSelected($event, 'mentor')"
+         accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+         class="file-input"
+         placeholder="Upload Mentor file" type="file">
+
+  <input #menteeUpload
+         (change)="onFileSelected($event, 'mentee')"
+         accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+         class="file-input"
+         placeholder="Upload Mentee file" type="file">
+
+  <div class="file-upload">
+    {{mentorFileName || 'No mentor file uploaded'}}
+    <button (click)="mentorUpload.click()" color="primary" mat-raised-button>
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+
+  <div class="file-upload">
+    {{menteeFileName || 'No mentee file uploaded'}}
+    <button (click)="menteeUpload.click()" color="primary" mat-raised-button>
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+
+
+</div>

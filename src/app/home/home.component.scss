@@ -2,7 +2,7 @@
   flex: 1 1 auto;
 }
 
-.intro-card {
+.home-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,4 +13,9 @@
   padding: 16px;
   border: solid 1px purple;
   border-radius: 1rem;
+}
+
+button {
+  margin-top: 1rem;
+  border-radius: 0.6rem;
 }
