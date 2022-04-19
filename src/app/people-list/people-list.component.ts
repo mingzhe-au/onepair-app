@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { selectMentorEntities } from "../mentors/mentor.reducer";
-import { IMentor } from "../models/people.model";
+import { IMentor, IPair } from "../models/people.model";
 import { Dictionary } from "@ngrx/entity";
 import { MatTableDataSource } from "@angular/material/table";
 import { selectMenteeEntities, selectMenteesState } from "../mentees/mentee.reducer";
+import { PairsService } from "../pairs/pairs.service";
+import { IPairState } from "../pairs/pair.reducer";
+import { upsertPairs } from "../pairs/pair.actions";
 
 @Component({
   selector: 'app-people-list',
@@ -18,11 +21,15 @@ export class PeopleListComponent implements OnInit {
   public mentees!: Dictionary<IMentor>;
   public menteeList!: IMentor[];
   public menteeDataSource = new MatTableDataSource(this.menteeList);
+  public pairs: IPair[] = [];
 
   public mentorColumns: string[] = ['id', 'name', 'email', 'city', 'rating'];
   public menteeColumns: string[] = ['id', 'name', 'email', 'city', 'rating'];
 
-  constructor(private store: Store) { }
+  constructor(
+    private store: Store,
+    private pairsService: PairsService,
+    private pairStore: Store<IPairState>) { }
 
   ngOnInit(): void {
     this.store.select(selectMentorEntities).subscribe((mentors) => {
@@ -54,5 +61,11 @@ export class PeopleListComponent implements OnInit {
 
   public matchPeople() {
     console.log('match people');
+    this.pairsService.matchPeople(this.mentorList, this.menteeList).then(
+      (pairs: IPair[]) => {
+        this.pairs = pairs;
+        this.pairStore.dispatch(upsertPairs({ pairs: this.pairs }));
+      }
+    );
   }
 }

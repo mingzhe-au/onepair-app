@@ -7,7 +7,6 @@ export const mentorsFeatureKey = 'mentors';
 
 export interface IMentorState extends EntityState<IMentor> {
   // additional entities state properties
-  mentorsPairedTime: number;
 }
 
 export function sortByLastName(a: IMentor, b: IMentor): number {
@@ -20,7 +19,6 @@ export const mentorAdapter: EntityAdapter<IMentor> = createEntityAdapter<IMentor
 
 export const initialState: IMentorState = mentorAdapter.getInitialState({
   // additional entity state properties
-  mentorsPairedTime: 0,
 });
 
 export const mentorReducer = createReducer(

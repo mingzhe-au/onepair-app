@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 import { mentorsFeatureKey } from "../mentors/mentor.reducer";
 import { LocalStorageConfig, localStorageSync } from "ngrx-store-localstorage";
 import { menteesFeatureKey } from "../mentees/mentee.reducer";
+import { pairsFeatureKey } from "../pairs/pair.reducer";
 
 export interface State {
 }
@@ -30,7 +31,8 @@ export const reducers: ActionReducerMap<State> = {};
 const LOCAL_STORAGE_SYNC_CONFIG: LocalStorageConfig = {
   keys: [
     mentorsFeatureKey,
-    menteesFeatureKey
+    menteesFeatureKey,
+    pairsFeatureKey
   ],
   rehydrate: true,
   restoreDates: false,

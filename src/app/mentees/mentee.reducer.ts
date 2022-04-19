@@ -7,7 +7,6 @@ export const menteesFeatureKey = 'mentees';
 
 export interface IMenteeState extends EntityState<IMentee> {
   // additional entities state properties
-  menteePairedTime: number;
 }
 
 export function sortByName(a: IMentee, b: IMentee): number {
@@ -22,7 +21,6 @@ export const adapter: EntityAdapter<IMentee> = createEntityAdapter<IMentee>(
 
 export const initialState: IMenteeState = adapter.getInitialState({
   // additional entity state properties
-  menteePairedTime: 0
 });
 
 export const reducer = createReducer(

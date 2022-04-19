@@ -25,12 +25,10 @@ export class HomeComponent implements OnInit {
 
   addMentors(newMentors: IMentor[]) {
     this.mentors = newMentors;
-    console.log(this.mentors);
   }
 
   addMentees(newMentees: IMentor[]) {
     this.mentees = newMentees;
-    console.log(this.mentees);
   }
 
   public uploadPeople() {
