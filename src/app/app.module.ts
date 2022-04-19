@@ -10,6 +10,7 @@ import { localStorageSync } from "ngrx-store-localstorage";
 import { MentorsModule } from "./mentors/mentors.module";
 import { metaReducers, reducers } from './reducers';
 import { environment } from '../environments/environment';
+import { MenteesModule } from "./mentees/mentees.module";
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['todos'] })(reducer);
@@ -24,6 +25,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
     AppRoutingModule,
     BrowserAnimationsModule,
     MentorsModule,
+    MenteesModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: false, // Restrict extension to log-only mode

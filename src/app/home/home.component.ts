@@ -3,6 +3,8 @@ import { IMentee, IMentor } from "../models/people.model";
 import { Store } from "@ngrx/store";
 import { upsertMentors } from "../mentors/mentor.actions";
 import { IMentorState } from "../mentors/mentor.reducer";
+import { IMenteeState } from "../mentees/mentee.reducer";
+import { upsertMentees } from "../mentees/mentee.actions";
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private mentorsStore: Store<IMentorState>,
+    private menteesStore: Store<IMenteeState>
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class HomeComponent implements OnInit {
 
   public uploadPeople() {
     this.mentorsStore.dispatch(upsertMentors({ mentors: this.mentors }));
+    this.menteesStore.dispatch(upsertMentees({ mentees: this.mentees }));
   }
 
 }

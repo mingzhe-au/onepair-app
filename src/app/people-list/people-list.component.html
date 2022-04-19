@@ -17,7 +17,7 @@
       <input matInput (keyup)="applyMentorFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
 
-    <table mat-table [dataSource]="mentorList" matSort>
+    <table mat-table [dataSource]="mentorDataSource" matSort>
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID</th>
@@ -66,50 +66,50 @@
     <h3>Mentees</h3>
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyMentorFilter($event)" placeholder="Ex. ium" #input>
+      <input matInput (keyup)="applyMenteeFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
 
-    <table mat-table [dataSource]="mentorList">
+    <table mat-table [dataSource]="menteeDataSource">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.id}}</td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.id}}</td>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.first_name}} {{mentor.last_name}} </td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.first_name}} {{mentee.last_name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.email}} </td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.email}} </td>
       </ng-container>
 
       <ng-container matColumnDef="gender">
         <th mat-header-cell *matHeaderCellDef> Gender</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.gender}} </td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.gender}} </td>
       </ng-container>
 
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef> City</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.city}} </td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.city}} </td>
       </ng-container>
 
       <ng-container matColumnDef="rating">
         <th mat-header-cell *matHeaderCellDef> Rating</th>
-        <td mat-cell *matCellDef="let mentor"> {{mentor.rating}} </td>
+        <td mat-cell *matCellDef="let mentee"> {{mentee.rating}} </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="mentorColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: mentorColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="menteeColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: menteeColumns;"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>
 
-      <mat-paginator [length]="mentorList.length" [pageSize]="30" aria-label="Select page of users"></mat-paginator>
+      <mat-paginator [length]="menteeList.length" [pageSize]="30" aria-label="Select page of users"></mat-paginator>
     </table>
   </div>
 </div>
