@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IMentee, IMentor } from "../models/people.model";
+import { Store } from "@ngrx/store";
+import { upsertMentors } from "../mentors/mentor.actions";
+import { IMentorState } from "../mentors/mentor.reducer";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +13,9 @@ export class HomeComponent implements OnInit {
   public mentors!: IMentor[];
   public mentees!: IMentee[];
 
-  constructor() { }
+  constructor(
+    private mentorsStore: Store<IMentorState>,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   public uploadPeople() {
-    console.log('uploading people');
+    this.mentorsStore.dispatch(upsertMentors({ mentors: this.mentors }));
   }
 
 }

@@ -1,15 +1,9 @@
-export interface IMentor {
-  city: string;
-  email: string;
-  first_name: string;
-  gender: string;
-  id: string;
-  last_name: string;
-  rating: number;
-  pairStatus?: PairedStatus
+export interface IPair {
+  mentor: IMentor;
+  mentee: IMentee;
 }
 
-export interface IMentee {
+export interface IMentor extends IPerson{
   city: string;
   email: string;
   first_name: string;
@@ -17,7 +11,26 @@ export interface IMentee {
   id: string;
   last_name: string;
   rating: number;
-  pairStatus?: PairedStatus
+}
+
+export interface IMentee extends IPerson{
+  city: string;
+  email: string;
+  first_name: string;
+  gender: string;
+  id: string;
+  last_name: string;
+  rating: number;
+}
+
+export interface IPerson {
+  city: string;
+  email: string;
+  first_name: string;
+  gender: string;
+  id: string;
+  last_name: string;
+  rating: number;
 }
 
 export enum PairedStatus {

@@ -1,0 +1,39 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.people-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 12;
+  justify-content: space-around;
+  height: 90vh;
+}
+
+.mentor-list-container {
+  border: 1px solid purple;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  height: 80vh
+}
+
+.mentee-list-container {
+  border: 1px solid purple;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  height: 80vh
+}
+
+button {
+  position: absolute;
+  bottom: 10px;
+  left: 48%;
+  border-radius: 0.6rem;
+}
+
+
